@@ -66,6 +66,11 @@ class Player:
             input("Ingrese el nombre de la canción: "))
         self.press_enter()
 
+    def exit(self):
+        """ Cierra la aplicación. """
+        print("Gracias por utilizar nuestro reproductor musical")
+        sys.exit(0)
+
     def run(self):
         """ Despliega el menú principal y procesa las opciones. """
         while True:
