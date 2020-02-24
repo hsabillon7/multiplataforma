@@ -21,11 +21,11 @@ class Player:
         self.playlist = list()
         # Diccionarios
         # Objetos que almacenan información en pares (clave y valor)
-        self.options = {"1": self.add_song}
-        #                 "2": self.play,
-        #                 "3": self.search_song,
-        #                 "4": self.delete_song,
-        #                 "5": self.close}
+        self.options = {"1": self.add_song,
+                        "2": self.play_song,
+                        "3": self.search_song,
+                        "4": self.delete_song,
+                        "5": self.close}
 
     def menu(self):
         """ Despliega el menú principal. """
@@ -66,9 +66,50 @@ class Player:
             input("Ingrese el nombre de la canción: "))
         self.press_enter()
 
-    def exit(self):
-        """ Cierra la aplicación. """
-        print("Gracias por utilizar nuestro reproductor musical")
+    def play_song(self):
+        """
+        Reproduce una canción si el formato es permitido.
+        Los formatos permitidos se encuentran en ArchivosSoportados.
+        """
+        file_filter = input("Ingrese el nombre de la canci´ón a reproducir: ")
+        if self.search_song(file_filter):
+            pass
+
+        self.press_enter()
+
+    def search_song(self, file_filter="", delete=False):
+        """ Busca una canción dentro de la lista de reproducción. """
+        if file_filter == "":
+            file_filter = input("Ingresa el término de búsqueda: ")
+
+        for x in range(len(self.playlist)):
+            if file_filter == self.playlist[x]:
+                print("Canción {0} encontrada.".format(file_filter))
+                # TODO: no repetir el mensaje de pausa
+                # self.press_enter() if delete
+                return True
+
+        print("Canción no existe dentro de la lista de reproducción.")
+        self.press_enter()
+
+        return False
+
+    def delete_song(self):
+        """ Elimina una canción de la lista de reproducción. """
+        file_filter = input("Ingrese el nombre de la canción: ")
+        if self.search_song(file_filter, True):
+            try:
+                self.playlist.remove(file_filter)
+                print("¡La canción {0} ha sido removida de la lista!"
+                      .format(file_filter))
+                self.press_enter()
+            except ValueError:
+                print("¡La canción no se encuentra en tu lista de reproducción!")
+                self.press_enter()
+
+    def close(self):
+        """ Cierra el reproductor musical. """
+        print("Gracias por utilizar nuestro reproductor musical.")
         sys.exit(0)
 
     def run(self):
@@ -81,6 +122,7 @@ class Player:
                 action()
             else:
                 print("¡{0} no es una opción vålida!".format(choice))
+                self.press_enter()
 
 
 if __name__ == "__main__":
