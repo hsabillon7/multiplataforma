@@ -85,8 +85,9 @@ class Player:
         for x in range(len(self.playlist)):
             if file_filter == self.playlist[x]:
                 print("Canción {0} encontrada.".format(file_filter))
-                # TODO: no repetir el mensaje de pausa
-                # self.press_enter() if delete
+                # Operador ternario
+                self.press_enter() if not delete else True
+
                 return True
 
         print("Canción no existe dentro de la lista de reproducción.")
