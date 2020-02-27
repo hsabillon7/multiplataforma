@@ -11,7 +11,11 @@ class Mp3File:
     Clase que se encarga de manejar los archivos de audio
     con formato MP3 (.mp3).
     """
-    ext = ".mp3"
+
+    def __init__(self, filename):
+        """ Inicializa los valores de la clase MP3. """
+        self.ext = ".mp3"
+        self.filename = filename
 
     def play(self):
         """ Reproduce el archivo de audio. """
@@ -23,7 +27,11 @@ class WavFile:
     Clase que se encarga de manejar los archivos de audio
     con formato WAV (.wav).
     """
-    ext = ".wav"
+
+    def __init__(self, filename):
+        """ Inicializa los valores de la clase WAV. """
+        self.ext = ".wav"
+        self.filename = filename
 
     def play(self):
         """ Reproduce el archivo de audio. """
@@ -35,7 +43,11 @@ class OggFile:
     Clase que se encarga de manejar los archivos de audio
     con formato OGG (.ogg).
     """
-    ext = ".ogg"
+
+    def __init__(self, filename):
+        """ Inicializa los valores de la clase OGG. """
+        self.ext = ".ogg"
+        self.filename = filename
 
     def play(self):
         """ Reproduce el archivo de audio. """
