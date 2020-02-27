@@ -35,5 +35,4 @@ class AudioFile:
             else:
                 valid_format.play()
         else:
-            print("Archivo MP3")
             valid_format.play()
