@@ -7,6 +7,7 @@
 import sys
 import os
 import platform
+from audioFile import AudioFile
 
 
 class Player:
@@ -71,9 +72,9 @@ class Player:
         Reproduce una canción si el formato es permitido.
         Los formatos permitidos se encuentran en ArchivosSoportados.
         """
-        file_filter = input("Ingrese el nombre de la canci´ón a reproducir: ")
+        file_filter = input("Ingrese el nombre de la canción a reproducir: ")
         if self.search_song(file_filter):
-            pass
+            AudioFile(file_filter)
 
         self.press_enter()
 
